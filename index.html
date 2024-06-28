@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Christian A. Harris">
+    <!-- Link to stylesheet -->
+     <link rel="stylesheet" href="style.css">
+     <!-- Link to font awesome -->
+      <link rel="stylesheet" href="./font-awesome 4.7.0/css/font-awesome.min.css">
+    <title>Note App</title>
+</head>
+<body>
+    <section class="main_container">
+        <header class="head_container">
+            <section class="head_title">
+                <div class="icon">
+                    <i class="fa fa-book"></i>
+                </div>
+                <div class="title">
+                    <h2>Notes</h2>
+                </div>
+            </section>
+            <section class="button_container">
+                <button type="button" id="create_notes"><i class="fa fa-pen"></i>Create Notes</button>
+            </section>
+        </header>
+        <!-- Header ends -->
+         <!-- Body starts -->
+        <main class="notes_container">
+            <!-- <section class="notes"> -->
+                <h4>First Note Title</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum neque repellendus soluta non debitis nulla consectetur illo quasi exercitationem ex ad provident odio officia fugit, earum necessitatibus modi at hic?</p>
+                <section class="date_and_action_container">
+                    <span>July 27, 2024</span>
+                    <i class="fa fa-trash"></i>
+                <!-- </section> -->
+            </section>
+        </main>
+        
+        <section class="popup_main_container">
+            <!-- Pop up header starts -->
+            <section class="pop_header">
+                <div>   
+                    <h3>Add New Notes</h3>
+                </div>
+                <div class="close_popup" id="close">&times;</div>
+            </section>
+            
+            <!-- Pop up header ends -->
+            <form> 
+                <!-- Pop up body starts -->
+                <section class="popup_body">
+
+                        <section class="popup_title">
+                            <div><label for="note_title">Title</label></div>
+                            <div><input type="text" id="note_title" class="note_title"></div>
+                        </section>
+                        <section class="popup_description">
+                            <div><label for="note_desctiption">Description</label></div>
+                            <div>
+                                <textarea rows="5" id="note_desctiption"></textarea>
+                            </div>
+                        </section>
+                </section>
+                <section class="popup_footer">
+                    <section class="popup_save_btn">
+                        <button type="submit" class="save_btn" id="save_notes">Add note</button>
+                    </section>
+                </section>
+                <!-- Pop up body ends -->
+            </form>
+                <!-- Overlay starts -->
+        </section>
+        <section class="overlay_container"></section>
+    </section>
+    <!-- Link to script file -->
+     <script src="script.js"></script>
+     <!-- Font awesome cdn -->
+     <script src="https://kit.fontawesome.com/cd31aca100.js" crossorigin="anonymous"></script>
+</body>
+</html>
