@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Christian A. Harris">
+    <!-- Link to font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Link to stylesheet -->
      <link rel="stylesheet" href="style.css">
      <!-- Link to font awesome -->
@@ -11,33 +15,25 @@
     <title>Note App</title>
 </head>
 <body>
-    <section class="main_container">
-        <header class="head_container">
-            <section class="head_title">
-                <div class="icon">
-                    <i class="fa fa-book"></i>
-                </div>
-                <div class="title">
-                    <h2>Notes</h2>
-                </div>
-            </section>
-            <section class="button_container">
-                <button type="button" id="create_notes"><i class="fa fa-pen"></i>Create Notes</button>
-            </section>
-        </header>
-        <!-- Header ends -->
-         <!-- Body starts -->
-        <main class="notes_container">
-            <!-- <section class="notes"> -->
-                <h4>First Note Title</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum neque repellendus soluta non debitis nulla consectetur illo quasi exercitationem ex ad provident odio officia fugit, earum necessitatibus modi at hic?</p>
-                <section class="date_and_action_container">
-                    <span>July 27, 2024</span>
-                    <i class="fa fa-trash"></i>
-                <!-- </section> -->
-            </section>
-        </main>
-        
+    <div class="main_container">
+            <div class="head_container" id="main_note_container">
+                <section class="head_title">
+                    <div class="icon">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="title">
+                        <h2>Notes</h2>
+                    </div>
+                </section>
+                <section class="button_container">
+                    <button type="button" id="create_notes"><i class="fa fa-pen"></i>Create Notes</button>
+                </section>
+            </div>
+            <!-- Header ends -->
+            <!-- Body starts -->
+        <div class="outter_content_container">
+            <div class="content_container"></div>
+        </div>
         <section class="popup_main_container">
             <!-- Pop up header starts -->
             <section class="pop_header">
@@ -50,22 +46,25 @@
             <!-- Pop up header ends -->
             <form> 
                 <!-- Pop up body starts -->
+                <span id="note_error"></span>
                 <section class="popup_body">
-
+        
                         <section class="popup_title">
                             <div><label for="note_title">Title</label></div>
-                            <div><input type="text" id="note_title" class="note_title"></div>
+                            <div><input type="text" id="note_title" class="note_title" required></div>
+
                         </section>
                         <section class="popup_description">
                             <div><label for="note_desctiption">Description</label></div>
                             <div>
-                                <textarea rows="5" id="note_desctiption"></textarea>
+                                <textarea rows="5" id="note_desctiption" required></textarea>
                             </div>
+
                         </section>
                 </section>
                 <section class="popup_footer">
                     <section class="popup_save_btn">
-                        <button type="submit" class="save_btn" id="save_notes">Add note</button>
+                        <button type="button" class="save_btn" id="save_notes">Add note</button>
                     </section>
                 </section>
                 <!-- Pop up body ends -->
@@ -73,7 +72,7 @@
                 <!-- Overlay starts -->
         </section>
         <section class="overlay_container"></section>
-    </section>
+    </div>
     <!-- Link to script file -->
      <script src="script.js"></script>
      <!-- Font awesome cdn -->
