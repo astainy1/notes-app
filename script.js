@@ -27,9 +27,12 @@ const allNotes = JSON.parse(localStorage.getItem("Notes") || "[]");
 
 
 //Load all notes before other scripts
-document.addEventListener('DOMContentLoaded', () =>{
-    displayNotes();
-})
+// document.addEventListener('DOMContentLoaded', () =>{
+//     displayNotes();
+// })
+
+displayNotes();
+
 //function for saving notes
 function saveNotes() {
     //Prevent the refreshing of the submit button
@@ -72,10 +75,14 @@ function saveNotes() {
 
 //function to display data from localStorage
 function displayNotes() {
-
+    /* Remove/delete any previous note */
+    document.querySelectorAll('.notes_container').forEach(note => note.remove());
+    
+    //Loop over each note
     allNotes.forEach((note, index) => {
         console.log(note)
- 
+        
+        //If there is a note, display it else set display to none
         if(allNotes){
 
             // let newDivContainer = document.createElement('div');
@@ -100,7 +107,7 @@ function displayNotes() {
 
         noteContainer.insertAdjacentElement('beforeend', newDiv)
         }else{
-            noteContainer.style.display = 'none'
+            noteContainer.style.display = 'none';
         }
 
     });
@@ -114,8 +121,7 @@ function deleteNote(noteId){
 
     //Store updated notes to localStorage
     localStorage.setItem("Notes", JSON.stringify(allNotes));
-    
-    displayNotes();
+    // displayNotes();
 }
 
 //function for displaying popup
