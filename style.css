@@ -36,6 +36,14 @@ body{
     padding: 20px;
 }
 
+.outter_content_container{
+    max-height: 550px;
+    /* background-color: red; */
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 20px;
+}
+
 .head_title{
     display: flex;
     justify-content: flex-start;
@@ -88,6 +96,9 @@ body{
     background-color: var(--font-primary-color);
     padding: 25px;
     border-radius: 5px;
+    width: 400px;
+    min-width: 50%;
+    margin-bottom: 5px;
 }
 
 .notes_container h4{
@@ -225,7 +236,7 @@ body{
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
 }
 
@@ -257,8 +268,16 @@ body{
     background:  var(--font-secondary-color);
     color: #fff;
     border-radius: 5px;
+    margin-top: 8px;
 }
 
 .popup_save_btn .save_btn:hover{
     opacity: 0.9;
+}
+
+/* Error style */
+span{
+    color: red;
+    text-align: center;
+    display: inline-block;
 }
