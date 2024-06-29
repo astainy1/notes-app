@@ -100,7 +100,10 @@ function displayNotes() {
                 </div>
                 <div class="date_and_action_container">
                     <span>${note.date}</span>
-                    <i class="fa fa-trash" onclick="deleteNote(${index})"></i>
+                    <div class="action_icons">
+                        <div onclick="deleteNote(${index})"><i class="fa fa-trash"></i></div>
+                        <div onclick="updateNote(${index}, '${note.title}', '${note.discription}')"><i class="fa fa-pen"></i></div>
+                    </div>
                 </div>
 
         `;  
@@ -121,7 +124,17 @@ function deleteNote(noteId){
 
     //Store updated notes to localStorage
     localStorage.setItem("Notes", JSON.stringify(allNotes));
-    // displayNotes();
+    displayNotes();
+}
+
+//function for updating notes
+function updateNote(noteId, title, description){
+    // console.log(noteId, title, description);
+    //display popup with existing data
+    showPopup()
+    noteTitle.value = `${title}`;
+    noteDescription.value = `${description}`;
+    saveNote()
 }
 
 //function for displaying popup
