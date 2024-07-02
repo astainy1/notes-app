@@ -104,7 +104,7 @@ function displayNotes() {
                     <span>${note.date}</span>
                     <div class="action_icons">
                         <div onclick="deleteNote(${index})"><i class="fa fa-trash"></i></div>
-                        <div onclick="updateNote(${index}, '${note.title}', '${note.discription}')"><i class="fa fa-pen">Edit</i></div>
+                        <div onclick="updateNote(${index}, '${note.title}', '${note.discription}')"><i class="fa fa-pen"></i></div>
                     </div>
                 </div>
 
