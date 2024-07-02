@@ -12,6 +12,7 @@
      <link rel="stylesheet" href="style.css">
      <!-- Link to font awesome -->
       <link rel="stylesheet" href="./font-awesome 4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="./font-awesome 4.7.0/css/font-awesome.css">
     <title>Note App</title>
 </head>
 <body>
@@ -38,7 +39,7 @@
             <!-- Pop up header starts -->
             <section class="pop_header">
                 <div>   
-                    <h3>Add New Notes</h3>
+                    <h3 id="title">Add New Notes</h3>
                 </div>
                 <div class="close_popup" id="close">&times;</div>
             </section>
@@ -50,12 +51,12 @@
                 <section class="popup_body">
         
                         <section class="popup_title">
-                            <div><label for="note_title">Title</label></div>
-                            <div><input type="text" id="note_title" class="note_title" required></div>
+                            <div><label for="note_title" class="title_tag">Title</label></div>
+                            <div><input type="text" class="note_title" id="note_title" required></div>
 
                         </section>
                         <section class="popup_description">
-                            <div><label for="note_desctiption">Description</label></div>
+                            <div><label for="note_desctiption" id="description">Description</label></div>
                             <div>
                                 <textarea rows="5" id="note_desctiption" required></textarea>
                             </div>
