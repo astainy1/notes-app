@@ -1,16 +1,18 @@
 //Testing connection
 // alert('Connected successfully!');
 
-//Get reference to all necessary HTML element
+//Get reference to all necessary HTML elements
 const noteContainer = document.querySelector('.content_container'),
-createNotes = document.querySelector('#create_notes'),
-popupBox = document.querySelector('.popup_main_container'),
-overLay = document.querySelector('.overlay_container'),
-closePopup = document.querySelector('#close'),
-noteTitle = document.querySelector('#note_title'),
-noteDescription = document.querySelector('#note_desctiption'),
-noteError = document.querySelector('#note_error'),
-saveNote = document.querySelector('#save_notes');
+    createNotes = document.querySelector('#create_notes'),
+    popupBox = document.querySelector('.popup_main_container'),
+    overLay = document.querySelector('.overlay_container'),
+    closePopup = document.querySelector('#close'),
+    titleTag= document.querySelector('.titleTag'),
+    noteTitle = document.querySelector('#note_title'),
+    updatenote = document.querySelector('#title'),
+    noteDescription = document.querySelector('#note_desctiption'),
+    noteError = document.querySelector('#note_error'),
+    saveNote = document.querySelector('#save_notes');
 
 
 //Global variable(s)
@@ -19,24 +21,18 @@ const months = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
+let isUpdated = false, upDatedId;
+
     /*
-    Get key named Notes in LocalStorage if exist and parse them into Js object, 
+    Get key named Notes in LocalStorage if exist and parse it into Js object, 
     else get empty array from localStorage.
 */
 const allNotes = JSON.parse(localStorage.getItem("Notes") || "[]");
-
-
-//Load all notes before other scripts
-// document.addEventListener('DOMContentLoaded', () =>{
-//     displayNotes();
-// })
 
 displayNotes();
 
 //function for saving notes
 function saveNotes() {
-    //Prevent the refreshing of the submit button
-    // e.preventDefault();
 
     //Get inputs fields values
     const notesTitle = noteTitle.value,
@@ -57,7 +53,11 @@ function saveNotes() {
                 date : `${newMonth} ${newDate}, ${newYear}`
             }
             //Store notes into array and push for every new notes
-            allNotes.push(notes);
+            if(!isUpdated){
+                allNotes.push(notes);//add note if there isn't
+            }else{
+                allNotes[upDatedId] = notes;//update note
+            }
 
             //Store notes into localStorage
             localStorage.setItem("Notes", JSON.stringify(allNotes))
@@ -102,7 +102,7 @@ function displayNotes() {
                     <span>${note.date}</span>
                     <div class="action_icons">
                         <div onclick="deleteNote(${index})"><i class="fa fa-trash"></i></div>
-                        <div onclick="updateNote(${index}, '${note.title}', '${note.discription}')"><i class="fa fa-pen"></i></div>
+                        <div onclick="updateNote(${index}, '${note.title}', '${note.discription}')"><i class="fa fa-pen">Edit</i></div>
                     </div>
                 </div>
 
@@ -129,18 +129,26 @@ function deleteNote(noteId){
 
 //function for updating notes
 function updateNote(noteId, title, description){
+    isUpdated = true;//Set is updated to true
+    upDatedId = noteId;//assign value to global variable
+    // console.log(isUpdated);
     // console.log(noteId, title, description);
+
     //display popup with existing data
-    showPopup()
+    showPopup();
+    updatenote.innerText = 'Update A Note';
+    saveNote.innerText = 'Save Update';
     noteTitle.value = `${title}`;
     noteDescription.value = `${description}`;
-    saveNote()
 }
 
 //function for displaying popup
 function showPopup(){
+  
     overLay.classList.add('show_overlay');
     popupBox.classList.add('show_popup');
+    updatenote.innerText = 'Add A New Note';
+    saveNote.innerText = 'Save Note';
     // console.log(popupBox);
 }
 
@@ -162,4 +170,4 @@ createNotes.addEventListener('click', showPopup);
 closePopup.addEventListener('click', hidePopup);
 
 //Event Listeners for saving notes
-saveNote.addEventListener('click', saveNotes)
+saveNote.addEventListener('click', saveNotes);
