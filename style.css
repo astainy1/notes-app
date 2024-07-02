@@ -116,6 +116,14 @@ body{
     padding: 15px 0;
 }
 
+#description_paragraph{
+    max-height: 200px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-arrow-color: #01242b;
+    scrollbar-width: none;
+}
+
 .date_and_action_container{
     display: flex;
     align-items: center;
@@ -288,4 +296,3 @@ span{
     text-align: center;
     display: inline-block;
 }
-
