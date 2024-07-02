@@ -21,7 +21,8 @@ const months = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-let isUpdated = false, upDatedId;
+let isUpdated = false;
+let upDatedId;
 
     /*
     Get key named Notes in LocalStorage if exist and parse it into Js object, 
@@ -56,6 +57,7 @@ function saveNotes() {
             if(!isUpdated){
                 allNotes.push(notes);//add note if there isn't
             }else{
+                isUpdated = false;
                 allNotes[upDatedId] = notes;//update note
             }
 
@@ -96,7 +98,7 @@ function displayNotes() {
             `
                 <div>
                     <h4>${note.title}</h4>
-                    <p>${note.discription}</p>
+                    <p id="description_paragraph">${note.discription}</p>
                 </div>
                 <div class="date_and_action_container">
                     <span>${note.date}</span>
@@ -119,6 +121,10 @@ function displayNotes() {
 
 //function for deleting notes
 function deleteNote(noteId){
+
+    //Confirm before deleting
+    let confirmDel = confirm('Are you sure you want to delete this note?');
+    if(!confirmDel) return
     allNotes.splice(noteId, 1);//removing selected note
     console.log(noteId)
 
@@ -155,6 +161,7 @@ function showPopup(){
 //function for hidding popup
 function hidePopup() {
     //clear form after save/hidding
+    isUpdated = false;
     noteTitle.value = '';
     noteDescription.value = '';
     noteError.textContent = ''
